@@ -1,0 +1,20 @@
+{% extends 'sostav/base.html' %}
+
+{% block content %}
+
+<h1>Блог</h1>
+<h2 class="count">Постов: {{ blogs.count }}</h2>
+
+{% for state in blogs %}
+
+<div class="element">
+    <h2 class="top"><a href="{% url 'detail' state.id %}"> {{ state.title }} </a></h2>
+    <div class="blog_text">
+        <h5> {{ state.date|date:'d.m.Y' }} </h5>
+        <p>{{ state.description|truncatechars:360 }}</p>
+    </div>
+</div>
+
+{% endfor %}
+
+{% endblock %}

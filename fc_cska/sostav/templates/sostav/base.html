@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+<body>
+    <div class="menu">
+        <div class="wrap">
+            <div class="logo">
+                <a href="{% url 'index' %}"><img src="{% static 'sostav/logo.png' %}" alt=""></a>
+            </div>
+            <ul>
+                <li><a href="{% url 'blogs' %}">Новости</a></li>
+                <li><a href="{% url 'index' %}">Состав</a></li>
+                <li><a href="{% static 'sostav/pdfslide.net_-85-1990-.pdf' %}" target="_blank">История</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <div class="wrap">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+    
+</body>
+</html>

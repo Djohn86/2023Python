@@ -1,0 +1,21 @@
+{% extends 'sostav/base.html' %}
+{% load static %}
+{% block content %}
+<div class="sap">
+    <div class="img">
+    <img src="{% static 'sostav/logo.png' %}" alt="">
+    </div>
+    <h1>Состав ФК ЦСКА</h1>
+</div>
+<div class="block">
+    {% for play in player %}
+    <div class="element">
+        <div><img src="{{ play.image.url}}" alt=""></div>
+        <h2><a href="{{ play.url }}" target="_blank">{{ play.FIO }}</a></h2>
+        <h3>Страна: {{ play.country }}</h3>
+    </div>
+    
+    {% endfor %}
+</div>
+
+{% endblock %}
