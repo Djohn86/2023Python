@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    </head>
+     </head>
 <body>
     <div class="menu">
         <div class="wrap">
@@ -17,6 +17,31 @@
                 <li><a href="{% url 'index' %}">Состав</a></li>
                 <li><a href="{% static 'sostav/pdfslide.net_-85-1990-.pdf' %}" target="_blank">История</a></li>
             </ul>
+            {% if user.is_authenticated %}
+            
+            <div class="user">
+                <ul>
+                    <li class="logo"> Пользователь: {{ user.username }} </li>
+                    <li><a href="{% url 'addpost' %}">Создание статьи</a></li>
+                    <li><form action="{% url 'logoutuser' %}"  method="post">
+                        {% csrf_token %}
+                        <button class="top">
+                            Выйти
+                        </button>
+                    </form>
+                </ul>
+            </div>
+
+            {% else %}
+
+            <div class="user">
+                <ul>
+                    <li><a href="{% url 'signupuser' %}">Зарегистрироваться</a></li>
+                    <li><a href="{% url 'loginuser' %}">Войти</a></li>
+                </ul>
+            </div>
+
+            {% endif %}
         </div>
     </div>
     <div class="content">
